@@ -1,0 +1,309 @@
+ :root {
+      --yellow:yellow;             /* main brand color (hero, highlights) */
+      --green: #0c831f;               /* buttons, check marks */
+      --green-dark: #0a5c17;          /* button hover */
+      --ink: #12261a;                 /* text, footer background */
+      --paper: #fbfcf8;               /* page background */
+      --mint: #e6f3e4;               /* soft green panels */
+      --font-heading: "Bricolage Grotesque", "Arial Black", Arial, sans-serif;
+      --font-body: "DM Sans", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background-color: var(--paper);
+    }
+
+    /* Shows a clear outline when someone uses the keyboard (Tab key) */
+    a:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 3px;
+    }
+
+    /* ============ 2. HEADER (top bar) ============ */
+
+    /* "sticky" keeps the header stuck to the top while you scroll */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;                   /* keeps it above the images and text */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 8%;
+      background-color: rgb(1, 82, 1);
+      border-bottom: 2px solid white;
+    }
+        nav a {
+        color: white;
+         text-decoration: none;
+        }
+
+        nav a:hover {
+         color: #f0f0f0;
+        }
+
+    /* Smooth scrolling when a nav link is clicked, and leave room for the sticky header */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    nav a:not(.button) {
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:not(.button):hover {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    /* Smaller version of the button for the header */
+    nav .button {
+      padding: 10px 22px;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1;
+      color: white;
+    }
+
+    /* ============ 3. HERO (big welcome section) ============ */
+
+    .heading {
+      padding: 50px 8% 110px;         /* extra bottom space: the menu image overlaps it */
+      background-color: rgb(3, 81, 3);
+      color: white;
+    }
+
+    .heading1 {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .heading h1 {
+      max-width: 11ch;                /* keeps the big heading in a tight block */
+      margin: 0 0 20px;
+      font-family: var(--font-heading);
+      font-size: clamp(44px, 8vw, 88px);   /* grows and shrinks with the screen */
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+
+    .heading p {
+      max-width: 520px;
+      margin: 0 0 30px;
+      font-size: 20px;
+    }
+
+    /* The "Get the App" button */
+    .button {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 999px;           /* fully rounded pill shape */
+      background-color: white;
+      color: green;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    /* Hover (or keyboard focus): green background, white text */
+    .button:hover,
+    .button:focus-visible {
+      background-color: var(--green);
+      color: white;
+    }
+
+    /* ============ 4. MENU IMAGE ============ */
+
+    .menu {
+      max-width: 1100px;
+      margin: -70px auto 40px;        /* negative top margin pulls it up over the yellow hero */
+      padding: 0 20px;
+    }
+
+    .menu-image {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      border-radius: 28px;
+      background-color: white;
+      border: 2px solid var(--ink);
+    }
+
+    /* ============ 5. FEATURE SECTIONS (text + image side by side) ============ */
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+
+    .feature{
+      flex-direction: row-reverse;
+    }
+
+    .feature-text,
+    .feature img {
+      width: 50%;
+    }
+
+    .feature h2 {
+      margin: 0 0 20px;
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4.5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+
+    /* Replace the default bullet dots with green check marks */
+    .feature ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .feature li {
+      position: relative;
+      margin-bottom: 14px;
+      padding-left: 34px;
+    }
+
+    .feature li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 22px;
+      height: 22px;
+      color: black;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 22px;
+      text-align: center;
+    }
+
+    .feature img {
+      max-width: 100%;
+      border-radius: 28px;
+      background-color: var(--mint);  /* soft green shows while the image loads */
+    }
+
+    /* ============ 6. FOOTER (bottom) ============ */
+
+    footer {
+      padding: 60px 8% 40px;
+      background-color: var(--ink);
+      color: #d5e0d8;
+    }
+
+    .footer-columns {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    footer h3 {
+      margin: 0 0 14px;
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--yellow);
+    }
+
+    footer a {
+      display: block;
+      margin: 8px 0;
+      color: #d5e0d8;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--yellow);
+    }
+
+    footer a:focus-visible {
+      outline-color: var(--yellow);
+    }
+
+    footer .social-icons a {
+      display: inline-block;
+      margin: 0 10px 10px 0;
+    }
+
+    /* White circle behind each icon so dark logos stay visible on the dark footer */
+    .social-icons img {
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      border-radius: 50%;
+      background-color: white;
+    }
+
+    .app-badges img {
+      height: 42px;
+    }
+
+    .copyright {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid #3a5142;
+      font-size: 14px;
+      color: #9db0a2;
+    }
+
+    /* ============ 7. MOBILE VERSION ============ */
+    /* These rules only apply when the screen is 650px wide or smaller */
+
+    @media (max-width: 650px) {
+      nav a:not(.button) {
+        display: none;                /* on phones only the button stays in the header */
+      }
+
+      .hero {
+        padding-bottom: 90px;
+      }
+
+      .feature,
+      .feature.reverse {
+        flex-direction: column;
+        gap: 28px;
+        margin: 50px auto;
+      }
+
+      .feature-text,
+      .feature img {
+        width: 100%;
+      }
+    }

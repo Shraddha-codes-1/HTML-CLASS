@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .block,
+    .inline,
+    .inline_block {
+        font-weight: bold;
+        font-family: sans-serif;
+    }
+
+
+    /* template starts from here */
+    .block {
+        /* height, width, p,m,border */
+        background-color: lightblue;
+        padding: 10px;
+        text-align: center;
+        height: 100px;
+        border: 10px;
+        border-radius: 100px;
+        border-width: 12%;
+        border-color: brown;
+        display: block;
+    }
+
+    .inline {
+        background-color: lightgreen;
+        padding: 7px;
+        font-family: fantasy;
+        border-radius: 10px;
+        display: block;
+
+    }
+
+    .inline_block {
+        background-color: mediumorchid;
+        padding: 100px;
+        border-radius: 20px;
+        display: block;
+        font-family: Georgia, 'Times New Roman', Times, serif;  
+    }
+</style>
+
+<body>
+    <div class="block">
+        <h1>TUDUMMMMMMMMM (BLOCK)</h1>
+    </div>
+    <div class="block">
+        <h1>TUDUMMMMMMMMM (BLOCK)</h1>
+    </div>
+        <div class="inline">
+            <h1>TUDUMMMMMMMMM (INLINE)</h1>
+        </div>
+        <div class="inline">
+            <h1>TUDUMMMMMMMMM (INLINE)</h1>
+        </div>
+    <div class="inline_block">
+        <h1>TUDUMMMMMMMMM(BLOCK_INLINE)</h1>
+    </div>
+<!-- block:
+ 1. next element -> new element 
+ 2.padding : apply in all directions 
+ 3.user defined height: works
+ 4.width:worlks
+ 5.margin:works
+ 6.border: apply in all directions
+
+ INLINE
+ ==============
+ 1.next element -> in same line
+ 2.padding : apply in all directions
+ 3. user defined height : not works
+ 4.width: not works
+ 5.margin: only works horizontally
+ 6.border: apply in all directions
+INLINE_BLOCK
+===============
+1.next element-> in same line
+2.padding: apply in all directions
+3.user height: works
+4.height:works
+5.margin:works
+6.bordr:appply in all directions
+-->
+
+</body>
+
+</html>

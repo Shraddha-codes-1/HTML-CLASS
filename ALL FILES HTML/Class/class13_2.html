@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: sans-serif;
+            color:darkcyan;
+        }
+        .box {
+            height: 220px;
+            width: 200px;
+            border: 5px solid red;
+            margin-top: 50px;
+        }
+        .overflow {
+            /* default property of overflow is visible */
+            /* overflow:visible; */
+            /* It makes the text hidden out of the box */
+            /* overflow: hidden; */
+            /* scroll bar in every direction */
+             overflow: scroll;
+            /* scroll bar in required direcition */
+            /* overflow: auto; */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Overflow example</h1>
+    <div class="box overflow">
+        <h1>GOOD MORNING !!!!!!!</h1>
+        <h1>GOOD MORNING !!!!!!!</h1>
+        <h1>GOOD MORNING !!!!!!!</h1>
+        <h1>GOOD MORNING !!!!!!!</h1>
+        <h1>GOOD MORNING !!!!!!!</h1> 
+    </div>
+</body>
+
+</html>

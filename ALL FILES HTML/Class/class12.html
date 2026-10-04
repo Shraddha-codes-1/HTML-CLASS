@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .box-1{
+            background-color: lightpink;
+        }
+        .box-2{
+            background-color: lightskyblue;
+            top:1rem;
+            left:2rem;
+        }
+        .box-3{
+            background-color: lightseagreen;
+            position: absolute;
+            top:100px;
+            left:50px;
+        } */
+        :root{
+           --primary: lightblue;
+           --primary-dark: blue;
+           --text: lightpink;
+           --spacing:10px;
+           --radius:8px;
+           --fonts: sans-serif;
+        }
+        body{
+            font-family: var(--fonts);
+            color: var(--text);
+        }
+        button{
+            background-color: var(--primary);
+            color: aliceblue;
+            border: 0cap;
+            cursor:pointer;
+            border-radius: var(--radius);
+            border: var(--radius);
+            padding: 10px;
+        }
+        button:hover{
+            background-color: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Positions -- at home </h1>
+        <h2> CSS variables </h2> 
+        <h2>By the help of var() function we can create variable in css (:,--)</h2>
+        <!-- BOX POSITIONS -------ABSOLUTE,RELATIVE,FIXED,STICKY -->
+        <button>Click Me </button>
+        
+</body>
+</html>

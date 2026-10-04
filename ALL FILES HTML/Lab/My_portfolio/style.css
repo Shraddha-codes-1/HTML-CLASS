@@ -1,0 +1,79 @@
+html{
+    scroll-behavior:smooth;
+}
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(#0F1020,#1E1B3A,#D9B56A);
+}
+.navhead{
+    margin: 10px;
+    background-color: #E8C77A;
+}
+.nav-bar{
+    background-color:white;
+    color: #253246;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px ;
+    width: 100%;
+}
+.nav-link{
+    text-align: right;
+    background-color:#E8C77A;
+    color:#ECEAF6;
+}
+/* Home  */
+.profile-title{
+    text-align: center;
+    font-size: 3rem;
+    color:#ECEAF6;
+    margin-bottom: 30px;
+}
+.highlight{
+    color:#E8C77A;
+}
+.sec-1{
+    display:flex;
+    align-items: center;
+    gap: 400px;
+    min-height: 100vh;
+    padding: 75px;
+
+}
+.profil-subtitle{
+    text-align: center;
+   margin-bottom: 50px;
+   color:#ECEAF6;
+    font-size: 6rem;
+}
+.button{
+    align-items: center;
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: linear-gradient(#0F1020);
+    font-family: inherit;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50px;
+    color: #ECEAF6;
+    font-size: 1.1rem;
+
+}
+.Home-image img{
+    height: 480px;
+    width: 360px;
+    overflow:hidden;    
+    /* basically outer part of box will be cut-out   */
+    size: 200px;
+    object-fit:cover;
+    display: block;
+    
+
+}

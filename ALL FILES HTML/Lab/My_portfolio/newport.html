@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        .html{
+            scroll-behavior: smooth;
+            scroll-padding: 90px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #0A1128, #0A1128,#24366B);
+            color: white;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            padding: 120px 20px 60px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px 50px;
+            backdrop-filter: blur(10px);
+            position: fixed;
+        }
+
+        .head {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #F2D472;
+        }
+
+        .home {
+            min-height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .profile {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #F2D472;
+        }
+        .Home-image img{
+           height: 480px;
+           width: 360px;
+           overflow:hidden;    
+           /* basically outer part of box will be cut-out   */
+           size: 200px;
+           object-fit:cover;
+           display: block;
+    
+
+}
+
+        .subtitle {
+            max-width: 700px;
+            font-size: 18px;
+            color: #e2e8f0;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: aquamarine;
+            color: #0f172a;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-bottom: 350px;
+            transition: transform 0.3 ease;
+        }
+
+        .Me {
+            color: aquamarine;
+            font-size: 48px;
+        }
+
+        .btn:hover {
+            background-color: #F2D472;
+            transform: translateY(-3px);
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+
+        <div class="head">
+            My Portfolio
+        </div>
+
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+        </div>
+
+    </nav>
+
+    <section class="home">
+
+        <h1 class="profile">
+            Hi, I am <span class="highlight">Shraddha</span>
+        </h1>
+
+        <p class="subtitle">
+            A front end Developer exploring the world of design and open-source.<br>
+            A chill girl figuring out this world.
+        </p>
+
+
+        <div class="Home-image">
+            <img src="./pp.jpeg" height="300px">
+        </div>
+
+
+        <div>
+        <a href="#" class="btn">
+            View My Work
+        </a>
+        </div>
+
+
+        <h2 class="Me">About Me</h2>
+
+        <p class="about me">
+            I m me .
+            
+        </p>
+
+    </section>
+</body>
+</html>

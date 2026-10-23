@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            height: 500px;
+            width: 500px;
+            background-color:slategray;
+            animation-name: con-mover;
+            animation-duration: 3.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .box {
+            height: 100px;
+            width: 100px;
+            background-color: hotpink;
+            border-top: 10%;
+            border-color: black;
+            /* link the animation */
+            animation-name: box-mover;
+            animation-duration: 3.5s;
+            animation-iteration-count: infinite;
+        /* after each iteration which direction your animation should  */
+            /* animation-direction: alternate; */
+            /* if animation iteration is not inifinte -> where you want your animation to end */
+            /* animation-fill-mode: forwards; */
+        /* speed of animation */
+            animation-timing-function: ease-in;
+        }
+
+        /* define the animation */
+        @keyframes box-mover {
+            20% {
+                transform: translateX(400px);
+            }
+
+            50% {
+                transform: translate(400px, 400px);
+                border-radius: 45%;
+            }
+
+            75% {
+                transform: translate(400px, 400px);
+            }
+
+            100% {
+                background-color:palevioletred;
+                transform: translateY(400px);
+
+
+            }
+        }
+        @keyframes con-mover {
+            50%{
+                background-color: white;
+            }
+            100%{
+                transform: rotate(210deg);
+                background-color:rgba(slategray,white,beige, 0);
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="box"></div>
+    </div>
+
+
+</body>
+
+</html>

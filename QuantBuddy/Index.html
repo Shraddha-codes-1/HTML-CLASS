@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QuantBuddy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040916;--card:#091128;--text:#f1e9d2;--muted:#8e99bd;--gold:#e8c46c;--gold2:#f7e3a1;--glow:rgba(232,196,108,.09);--goldtxt:#040916;--soft:#0d1836;--line:#18264d;--ok:#3fbf8a;--bad:#e5645f;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+:root[data-theme="light"]{--bg:#f7f3e8;--card:#fffdf6;--text:#0a1530;--muted:#5d6785;--gold:#a67c0e;--goldtxt:#fffdf6;--soft:#efe8d2;--line:#e0d6b6;--ok:#1c8a5c;--bad:#c0392b;--gold2:#c99a1b;--glow:rgba(166,124,14,.07);color-scheme:light}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:radial-gradient(900px 440px at 50% -90px,var(--glow),transparent) no-repeat,var(--bg);color:var(--text);font:16px/1.6 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:84px}
+h1,h2,h3,.serif{font-family:"Playfair Display",Georgia,serif;letter-spacing:.2px}
+h2{font-size:26px;margin:.4em 0}h3{font-size:19px;margin:1em 0 .3em}
+.wrap{max-width:720px;margin:0 auto;padding:14px 16px}
+.tick{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line);background:var(--soft);font-size:13px;color:var(--muted)}
+.tick div{display:inline-block;padding:7px 0;animation:mq 60s linear infinite}
+.tick b{color:var(--gold);margin:0 8px 0 24px;font-weight:700}
+@keyframes mq{to{transform:translateX(-50%)}}
+header{display:flex;justify-content:space-between;align-items:center;padding:6px 0 10px}
+.logo{font:800 24px "Playfair Display",Georgia,serif;cursor:pointer}.logo span{color:var(--gold)}
+button{font:inherit;cursor:pointer;border:1px solid var(--gold);border-radius:6px;padding:10px 16px;background:var(--gold);color:var(--goldtxt);font-weight:700;transition:transform .12s,opacity .2s}
+button:active{transform:scale(.97)}
+button.ghost{background:transparent;color:var(--gold)}button.sm{padding:5px 11px;font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:6px;padding:16px;margin:12px 0;box-shadow:0 10px 28px -14px rgba(0,0,0,.6)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.grow{flex:1;min-width:0}
+.muted{color:var(--muted);font-size:14px}.gold{color:var(--gold)}
+.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700}
+.bar{height:5px;background:var(--soft);margin-top:8px}.bar i{display:block;height:100%;background:var(--gold);transition:width .6s}
+.hero{display:flex;gap:18px;align-items:center;padding:18px 4px}
+.ring{transform:rotate(-90deg)}.ring circle{fill:none;stroke-width:9}.ring .tr{stroke:var(--soft)}
+.ring .pr{stroke:var(--gold);stroke-linecap:round;transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.2,1)}
+.mod{cursor:pointer;transition:transform .15s,border-color .2s}.mod:hover{transform:translateX(4px)}
+.mod.soon{opacity:.5;cursor:default}.mod.soon:hover{transform:none}
+.num{font:800 28px "Playfair Display",Georgia,serif;color:var(--gold);min-width:42px}
+.fact{background:linear-gradient(135deg,var(--card),var(--soft));border:1px dashed var(--gold);border-radius:6px;padding:16px;margin:16px 0}
+.tabs{display:flex;gap:6px;margin:8px 0}.tabs button{background:transparent;color:var(--text);border-color:var(--line)}.tabs button.on{background:var(--gold);color:var(--goldtxt);border-color:var(--gold)}
+.opt{display:block;width:100%;text-align:left;margin:7px 0;background:transparent;color:var(--text);border-color:var(--line);font-weight:500}
+.opt:hover{border-color:var(--gold)}.opt.right{background:var(--ok);border-color:var(--ok);color:#fff}.opt.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.flip{perspective:900px;height:170px;margin:10px 0;cursor:pointer}
+.flip>div{position:relative;width:100%;height:100%;transition:transform .55s;transform-style:preserve-3d}.flip.on>div{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;border-radius:6px;background:var(--soft);border:1px solid var(--gold);font:600 20px "Playfair Display",Georgia,serif}
+.face.back{transform:rotateY(180deg);background:var(--card);font:500 16px "DM Sans",system-ui,sans-serif}
+input[type=search]{width:100%;padding:11px 12px;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit}
+input[type=range]{width:100%;accent-color:var(--gold)}
+.check{width:22px;height:22px;accent-color:var(--gold)}
+.big{font:800 30px "Playfair Display",Georgia,serif;color:var(--gold)}
+.cmp{height:26px;margin:6px 0;color:var(--goldtxt);font-size:13px;font-weight:700;padding:4px 8px;white-space:nowrap;transition:width .4s;min-width:70px}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--gold);padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+.nav button{flex:1;background:transparent;border:0;border-radius:0;color:var(--muted);padding:14px 0;font-size:14px}.nav button.on{color:var(--gold)}
+.tag{display:inline-block;font-size:11px;letter-spacing:1.5px;padding:2px 8px;border:1px solid var(--gold);color:var(--gold);margin-bottom:6px}
+.lens{margin-top:8px;padding:8px 10px;background:var(--soft);font-size:14px}
+.lp-h{font:800 36px/1.15 "Playfair Display",Georgia,serif;margin:6px 0 10px}
+.gt{background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats{display:flex;gap:8px;margin:16px 0 22px}.stats div{flex:1;border:1px solid var(--line);padding:10px 4px;text-align:center;border-radius:6px;background:var(--card);font-size:13px;color:var(--muted)}
+.stats b{display:block;font:800 24px "Playfair Display",Georgia,serif;color:var(--gold)}
+.stack{display:flex;height:14px;margin:12px 0 4px;gap:2px}.stack div{transition:flex .5s}
+.lvl{display:flex;gap:8px;justify-content:center}
+.node{flex:1;max-width:230px;border:1px solid var(--line);background:var(--card);border-radius:6px;padding:10px 6px 12px;text-align:center;cursor:pointer;position:relative;overflow:hidden;animation:fd .5s ease both;transition:border-color .2s,transform .15s,box-shadow .2s}
+.node:hover{border-color:var(--gold);transform:translateY(-2px)}
+.node.sel{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 12px 30px -14px var(--gold)}
+.node small{display:block;color:var(--muted);font-size:11px;letter-spacing:1.5px}
+.node b{display:block;font-size:13px;line-height:1.25;margin:2px 0 4px}
+.node .w{font:800 22px "Playfair Display",Georgia,serif;color:var(--gold)}
+.node i{position:absolute;left:0;bottom:0;height:3px;background:var(--gold)}
+.link{height:28px;width:2px;margin:0 auto;background:linear-gradient(var(--gold),transparent)}
+.fade{animation:fd .35s ease both}@keyframes fd{from{opacity:0;transform:translateY(8px)}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<script type="text/babel">
+const { useState, useEffect } = React;
+
+/* ===== 1. CONTENT: add topics, news, facts here. No code changes needed. ===== */
+const MODULES = [
+  { id: "m0", title: "Start Here: The Hook", time: "1 hr", topics: [
+    { id: "luck", title: "Why numbers beat gut feeling", time: "10 min", demo: "coins",
+      intro: "Flip a coin 10 times and you might see 7 heads. Flip it 1,000 times and it settles near 50%. Quants live on this idea: single events are random, but big numbers behave. Try it below.",
+      search: "law of large numbers explained simply",
+      quiz: [{ q: "More flips make the share of heads get closer to…", o: ["0%", "50%", "100%", "A random number"], a: 1, why: "That’s the law of large numbers: averages stabilise as samples grow." },
+             { q: "Why do quants like lots of data?", o: ["It looks impressive", "Patterns become reliable", "It’s cheaper", "Luck disappears completely"], a: 1, why: "Small samples mislead. Large ones reveal real patterns." }],
+      cards: [{ f: "Law of Large Numbers", b: "With more trials, the average result moves closer to the true probability." }, { f: "Sample size", b: "How many observations you have. Bigger usually means more trustworthy." }] },
+    { id: "grow", title: "Money that grows on itself", time: "15 min", demo: "compound",
+      intro: "Compound interest means you earn interest on your interest. It starts slowly, then takes off. Slide the numbers and watch the gap open up between simple and compound growth.",
+      search: "compound interest explained for beginners",
+      quiz: [{ q: "Compound interest is interest on…", o: ["Principal only", "Principal plus past interest", "Nothing", "Inflation"], a: 1, why: "Each period’s interest is added, and then it earns interest too." },
+             { q: "Rule of 72: at 8% a year, money doubles in about…", o: ["6 years", "9 years", "12 years", "72 years"], a: 1, why: "72 ÷ 8 = 9 years." }],
+      cards: [{ f: "Compound interest", b: "A = P(1 + r)ⁿ" }, { f: "Rule of 72", b: "Years to double ≈ 72 ÷ interest rate (in %)" }] },
+    { id: "rr", title: "Risk vs reward", time: "15 min", demo: "risk",
+      intro: "Safe things pay little. Bold things can pay more, but can also hurt. Finance is the art of choosing how much risk to take. Drag the slider and see the trade-off. The numbers are made up, just to teach the idea.",
+      search: "risk and return explained simply",
+      quiz: [{ q: "Higher expected return usually comes with…", o: ["Less risk", "More risk", "No change", "Guarantees"], a: 1, why: "There’s no free lunch. Extra return is paid for with extra uncertainty." },
+             { q: "Spreading money across many assets is called…", o: ["Leverage", "Diversification", "Arbitrage", "Speculation"], a: 1, why: "Diversification reduces the damage from any single bad bet." }],
+      cards: [{ f: "Risk", b: "The chance that outcomes differ from what you expected, especially on the downside." }, { f: "Diversification", b: "Don’t put all your eggs in one basket." }] }
+  ] },
+  { id: "m1", title: "Maths & Stats Foundations", time: "2.5 weeks", topics: [
+    { id: "prob", title: "Probability Basics", time: "45 min",
+      intro: "Probability is a number between 0 and 1 saying how likely something is. 0 means never, 1 means always. Markets are full of uncertainty, and this is the language for it.",
+      search: "probability basics for beginners",
+      quiz: [{ q: "A fair coin is flipped once. P(heads)?", o: ["0", "0.5", "1", "2"], a: 1, why: "Two equally likely outcomes, so 1 out of 2." },
+             { q: "Which can NEVER be a probability?", o: ["0.3", "1", "1.4", "0"], a: 2, why: "Probabilities live between 0 and 1." },
+             { q: "Fair die: P(even number)?", o: ["1/6", "1/3", "1/2", "2/3"], a: 2, why: "2, 4, 6 are 3 of 6 outcomes." }],
+      cards: [{ f: "Probability", b: "Chance of an event, from 0 (never) to 1 (certain)." }, { f: "P(A)", b: "Favourable outcomes ÷ total equally likely outcomes." }, { f: "Independent events", b: "One doesn’t affect the other. P(A and B) = P(A) × P(B)." }] },
+    { id: "meanvar", title: "Mean, Variance & Std Dev", time: "50 min",
+      intro: "Mean is the average. Variance and standard deviation show how spread out numbers are. In finance, that spread is basically risk.",
+      search: "mean variance standard deviation explained",
+      quiz: [{ q: "Mean of 2, 4, 6?", o: ["3", "4", "5", "12"], a: 1, why: "12 ÷ 3 = 4." },
+             { q: "Higher std dev of returns means…", o: ["Less risk", "More risk", "Guaranteed gain", "Cheaper stock"], a: 1, why: "Bigger swings, more risk." },
+             { q: "Variance equals…", o: ["Mean squared", "Std dev squared", "Std dev ÷ 2", "Sum of values"], a: 1, why: "Variance = σ²." }],
+      cards: [{ f: "Mean", b: "Sum of values ÷ count." }, { f: "Variance", b: "σ² = Σ(x − μ)² ÷ n" }, { f: "Standard deviation", b: "√Variance. Same units as the data." }] },
+    { id: "dist", title: "Normal Distribution", time: "55 min",
+      intro: "The famous bell curve: most values cluster in the middle, few sit at the extremes. Many finance models assume returns look roughly like this.",
+      search: "normal distribution bell curve explained",
+      quiz: [{ q: "Share of data within 1 std dev of the mean?", o: ["50%", "68%", "95%", "99.7%"], a: 1, why: "68-95-99.7 rule." },
+             { q: "The bell curve is symmetric around the…", o: ["Mean", "Maximum", "Zero", "Variance"], a: 0, why: "It’s centred on the mean." }],
+      cards: [{ f: "68-95-99.7", b: "Data within 1, 2, 3 standard deviations." }, { f: "Fat tails", b: "Real markets have more extreme events than a normal curve predicts." }] }
+  ] },
+  { id: "m2", title: "Finance Basics", time: "2 weeks", soon: true },
+  { id: "m3", title: "Python for Quant", time: "2 weeks", soon: true },
+  { id: "m4", title: "Quantitative Finance", time: "3 weeks", soon: true },
+  { id: "m5", title: "Risk Management", time: "1.5 weeks", soon: true },
+  { id: "m6", title: "Financial Engineering", time: "2 weeks", soon: true },
+  { id: "m7", title: "Career Prep", time: "1 week", soon: true }
+];
+// Market snapshot taken on 28 Oct 2026. Edit this list to refresh it.
+const NEWS_DATE = "28 Oct 2026";
+const NEWS = [
+  { tag: "INDIA", h: "Sensex slides for a seventh straight session", s: "Indian shares opened lower, and midday reports put the drop near 940 points, with IT names like Infosys among the biggest drags.", lens: "Quant lens: a run of red days is what volatility and drawdown measures try to capture.", src: "India TV, Punjab Kesari" },
+  { tag: "INDIA", h: "Jio Platforms heads for its market debut", s: "After a ₹30,213 crore IPO at a reported valuation near ₹10.3 lakh crore, the shares are about to start trading.", lens: "Quant lens: valuation. How do you decide what a company is worth?", src: "India TV" },
+  { tag: "ASIA", h: "Asian markets rally on renewed AI excitement", s: "Japan’s Nikkei gained about 1.3% and South Korea’s Kospi jumped over 6% after US tech stocks surged.", lens: "Quant lens: correlation. Global markets often move together, which weakens diversification.", src: "India TV" },
+  { tag: "GLOBAL", h: "Oil and tanker worries kept Wall Street nervous in early October", s: "Rising oil prices revived inflation worries and pushed the Nasdaq lower on 8 October.", lens: "Quant lens: risk factors. Oil and interest rates hit many assets at once.", src: "Google News coverage" }
+];
+const FACTS = [
+  "The Dutch East India Company, founded in 1602, is often called the first publicly traded company.",
+  "Rule of 72: divide 72 by the interest rate to estimate how many years money takes to double.",
+  "The Black-Scholes option pricing formula dates to 1973. Its authors’ work was later honoured with a Nobel Prize in Economics (1997).",
+  "Ed Thorp used maths to beat blackjack, then took the same thinking to markets.",
+  "A hedge fund named Long-Term Capital Management had Nobel winners on board and still collapsed in 1998. Models aren’t magic.",
+  "Renaissance Technologies’ Medallion fund is reportedly one of the most profitable funds ever, built by mathematicians."
+];
+// Map of how subjects connect. w = how much each counts toward being job-ready (our estimate, totals 100).
+const FLOW = [
+  [{ id: "m0", n: "00", s: "Start Here", w: 0, why: "A gentle warm-up with games and demos so nothing feels scary. About an hour." }],
+  [{ id: "m1", n: "01", s: "Maths & Stats", w: 20, why: "The language of everything else: probability, statistics, a little linear algebra and calculus. Without it, models look like magic." },
+   { id: "m2", n: "02", s: "Finance Basics", w: 15, why: "Stocks, bonds, interest and derivatives. You can’t model what you don’t understand." },
+   { id: "m3", n: "03", s: "Python", w: 15, why: "Python, NumPy and pandas turn ideas into experiments. Employers test this directly." }],
+  [{ id: "m4", n: "04", s: "Quantitative Finance", w: 25, why: "The core. Pricing models, Black-Scholes, stochastic processes and portfolio theory. This is what ‘quant’ actually means." }],
+  [{ id: "m5", n: "05", s: "Risk Management", w: 10, why: "VaR, market, credit and operational risk, plus hedging. Banks need people who can measure what could go wrong." },
+   { id: "m6", n: "06", s: "Financial Engineering", w: 7, why: "Structured products, exotic options and Monte Carlo: building new instruments from the basics." }],
+  [{ id: "m7", n: "07", s: "Career Prep", w: 8, why: "Resume, interview practice and role options so your skills turn into an offer." }]
+];
+const GLOSSARY = [
+  { t: "Variance", eli5: "If all your friends are nearly the same height, variance is tiny. If one is a toddler and one is a basketball player, it’s big. It measures spread.", gen: "How chaotic the numbers are. Low = calm and boring. High = absolute rollercoaster.", pro: "The expected squared deviation from the mean: Var(X) = E[(X − μ)²]. Its square root is the standard deviation." },
+  { t: "Probability", eli5: "4 candies, 1 is red. Grab one blindly and you have a 1-in-4 chance of red.", gen: "The odds, but with maths. 0 = never, 1 = bet your house.", pro: "A measure P on events with 0 ≤ P(A) ≤ 1, P(Ω) = 1, and additivity over disjoint events." },
+  { t: "Volatility", eli5: "How much a toy’s price jumps up and down each day. Big jumps mean high volatility.", gen: "How unhinged a stock’s mood swings are.", pro: "The standard deviation of an asset’s returns, usually annualised (daily σ × √252)." },
+  { t: "Compound interest", eli5: "Your piggy bank earns coins, and then those new coins earn coins too.", gen: "Interest on your interest. The snowball that eats the mountain.", pro: "Growth where interest accrues on principal plus accumulated interest: A = P(1 + r/n)^(nt)." },
+  { t: "Diversification", eli5: "Don’t carry all your eggs in one basket, so if you trip, not every egg breaks.", gen: "Not going all-in on one stock like it’s a personality.", pro: "Combining imperfectly correlated assets so portfolio variance falls below the weighted average of individual variances." },
+  { t: "Law of Large Numbers", eli5: "Flip a coin a few times and it’s wobbly. Flip it a thousand times and it’s about half heads.", gen: "Small sample = vibes. Big sample = truth.", pro: "The sample mean of i.i.d. observations converges to the expected value as n → ∞." }
+];
+
+/* ===== 2. SAVING (browser storage, guarded) ===== */
+const KEY = "quantbuddy-v2";
+const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } };
+const save = d => { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} };
+const day = o => new Date(Date.now() - o * 864e5).toISOString().slice(0, 10);
+const bump = p => { const s = p.streak || {}; if (s.last === day(0)) return p; return { ...p, streak: { last: day(0), n: s.last === day(1) ? (s.n || 0) + 1 : 1 } }; };
+
+/* ===== 3. HELPERS ===== */
+const live = MODULES.filter(m => m.topics);
+const flat = live.flatMap(m => m.topics.map(t => ({ m, t })));
+const pct = (a, b) => b ? Math.round(100 * a / b) : 0;
+const modPct = (m, d) => pct(m.topics.filter(t => d.done?.[t.id]).length, m.topics.length);
+const Bar = ({ v }) => <div className="bar"><i style={{ width: v + "%" }} /></div>;
+const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
+
+/* ===== 4. INTERACTIVE DEMOS ===== */
+function Coins() {
+  const [s, setS] = useState({ h: 0, n: 0 });
+  const run = k => { let h = 0; for (let i = 0; i < k; i++) if (Math.random() < 0.5) h++; setS(p => ({ h: p.h + h, n: p.n + k })); };
+  const p = s.n ? (100 * s.h / s.n) : 0;
+  return <div className="card"><div className="eyebrow">Playground</div><h3>Coin flip lab</h3>
+    <div className="row"><button onClick={() => run(10)}>Flip 10</button><button onClick={() => run(100)}>Flip 100</button><button onClick={() => run(1000)}>Flip 1,000</button><button className="ghost" onClick={() => setS({ h: 0, n: 0 })}>Reset</button></div>
+    <p className="big">{s.n ? p.toFixed(1) + "% heads" : "Flip to start"}</p>
+    <div style={{ position: "relative" }}><Bar v={p} /><div style={{ position: "absolute", left: "50%", top: -4, height: 13, width: 2, background: "var(--text)" }} /></div>
+    <p className="muted">{s.n} flips so far. The white line is 50%. Watch the gold bar creep toward it.</p></div>;
+}
+function Compound() {
+  const [P, setP] = useState(10000), [r, setR] = useState(8), [y, setY] = useState(20);
+  const simple = P * (1 + r / 100 * y), comp = P * Math.pow(1 + r / 100, y);
+  return <div className="card"><div className="eyebrow">Playground</div><h3>Growth machine</h3>
+    <label className="muted">Start with {inr(P)}</label><input type="range" min="1000" max="100000" step="1000" value={P} onChange={e => setP(+e.target.value)} />
+    <label className="muted">Rate {r}% a year</label><input type="range" min="1" max="20" value={r} onChange={e => setR(+e.target.value)} />
+    <label className="muted">For {y} years</label><input type="range" min="1" max="40" value={y} onChange={e => setY(+e.target.value)} />
+    <div className="cmp" style={{ width: (100 * simple / comp) + "%", background: "var(--muted)" }}>Simple {inr(simple)}</div>
+    <div className="cmp" style={{ width: "100%", background: "var(--gold)" }}>Compound {inr(comp)}</div>
+    <p>Compounding adds <b className="gold">{inr(comp - simple)}</b> extra. Money doubles in about <b className="gold">{(72 / r).toFixed(1)} years</b>.</p></div>;
+}
+function Risk() {
+  const [w, setW] = useState(50);
+  const exp = (w * 10 + (100 - w) * 4) / 100, sw = w * 18 / 100, lo = exp - sw, hi = exp + sw;
+  const L = x => Math.max(0, Math.min(100, (x + 30) / 70 * 100));
+  return <div className="card"><div className="eyebrow">Playground</div><h3>Risk dial</h3>
+    <label className="muted">{w}% in stocks, {100 - w}% in safe savings</label><input type="range" min="0" max="100" value={w} onChange={e => setW(+e.target.value)} />
+    <p>Expected return: <b className="gold">{exp.toFixed(1)}%</b> a year</p>
+    <p>A typical range: <b>{lo.toFixed(1)}%</b> to <b>{hi.toFixed(1)}%</b></p>
+    <div style={{ position: "relative", height: 16, background: "var(--soft)" }}>
+      <div style={{ position: "absolute", left: L(lo) + "%", width: Math.max(1, L(hi) - L(lo)) + "%", height: "100%", background: "var(--gold)", transition: "all .3s" }} />
+      <div style={{ position: "absolute", left: L(0) + "%", width: 2, height: "100%", background: "var(--text)" }} /></div>
+    <p className="muted">Scale −30% to +40%. The white line is 0%. Illustrative numbers only: safe 4%, stocks 10% ± 18%.</p></div>;
+}
+const DEMOS = { coins: Coins, compound: Compound, risk: Risk };
+
+/* ===== 5. SCREENS ===== */
+function Fact() {
+  const [i, setI] = useState(() => Math.floor(Math.random() * FACTS.length));
+  return <div className="fact fade"><div className="eyebrow">Did you know?</div><p className="serif" style={{ fontSize: 18, margin: "6px 0 10px" }}>{FACTS[i]}</p>
+    <button className="ghost sm" onClick={() => setI((i + 1) % FACTS.length)}>Another one</button></div>;
+}
+function Ring({ v }) {
+  const R = 44, C = 2 * Math.PI * R;
+  return <svg width="104" height="104" viewBox="0 0 104 104" className="ring"><circle className="tr" cx="52" cy="52" r={R} /><circle className="pr" cx="52" cy="52" r={R} strokeDasharray={C} strokeDashoffset={C * (1 - v / 100)} /></svg>;
+}
+function Home({ d, go }) {
+  const all = flat.length, done = flat.filter(x => d.done?.[x.t.id]).length, v = pct(done, all);
+  const nxt = flat.find(x => !d.done?.[x.t.id]);
+  return <div className="fade">
+    <div className="hero"><div style={{ position: "relative" }}><Ring v={v} /><div className="big" style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>{v}%</div></div>
+      <div><div className="eyebrow">Your journey</div><h2 style={{ margin: "4px 0" }}>Quant, minus the fear.</h2>
+        <div className="muted">{done} of {all} topics done</div>
+        {nxt && <button className="sm" style={{ marginTop: 8 }} onClick={() => go({ v: "topic", m: nxt.m.id, t: nxt.t.id })}>{done ? "Continue" : "Start"}: {nxt.t.title}</button>}</div></div>
+    <h3>The roadmap</h3>
+    {MODULES.map((m, i) => <React.Fragment key={m.id}>
+      <div className={"card mod" + (m.soon ? " soon" : "")} onClick={() => !m.soon && go({ v: "mod", m: m.id })}>
+        <div className="row"><div className="num">0{i}</div><div className="grow"><b>{m.title}</b><div className="muted">{m.time}{m.soon ? " · coming soon" : ""}</div></div>{!m.soon && <b className="gold">{modPct(m, d)}%</b>}</div>
+        {!m.soon && <Bar v={modPct(m, d)} />}</div>
+      {i === 2 && <Fact />}
+    </React.Fragment>)}
+  </div>;
+}
+function Module({ m, d, go, toggle }) {
+  return <div className="fade"><button className="ghost sm" onClick={() => go({ v: "home" })}>← Roadmap</button>
+    <h2>{m.title}</h2><b className="gold">{modPct(m, d)}% complete</b><Bar v={modPct(m, d)} />
+    {m.topics.map(t => <div key={t.id} className="card row">
+      <input type="checkbox" className="check" checked={!!d.done?.[t.id]} onChange={() => toggle(t.id)} aria-label="Mark done" />
+      <div className="grow" style={{ cursor: "pointer" }} onClick={() => go({ v: "topic", m: m.id, t: t.id })}><b>{t.title}</b>
+        <div className="muted">{t.time}{d.scores?.[t.id] != null ? " · quiz " + d.scores[t.id] + "/" + t.quiz.length : ""}</div></div><span className="gold">›</span></div>)}</div>;
+}
+function Videos({ t }) {
+  const lang = "en";
+  const id = t.playlist?.[lang];
+  const url = id ? "https://www.youtube.com/playlist?list=" + id : "https://www.youtube.com/results?search_query=" + encodeURIComponent(t.search);
+  return <div className="card"><div className="eyebrow">Watch</div>
+    
+    <a href={url} target="_blank" rel="noopener"><button>{id ? "Open playlist" : "Find videos on YouTube"} ↗</button></a>
+    {!id && <p className="muted">Playlist not added yet. Paste its ID into this topic’s data.</p>}</div>;
+}
+function Quiz({ t, setScore }) {
+  const [i, setI] = useState(0), [pick, setPick] = useState(null), [sc, setSc] = useState(0), [end, setEnd] = useState(false);
+  const q = t.quiz[i];
+  const choose = k => { if (pick !== null) return; setPick(k); if (k === q.a) setSc(sc + 1); };
+  const next = () => { if (i + 1 < t.quiz.length) { setI(i + 1); setPick(null); } else { setEnd(true); setScore(t.id, sc); } };
+  if (end) return <div className="card"><div className="eyebrow">Quiz complete</div><p className="big">{sc} / {t.quiz.length}</p>
+    <p className="muted">{sc === t.quiz.length ? "Flawless." : "Good effort. Every attempt makes it stick."}</p><button onClick={() => { setI(0); setPick(null); setSc(0); setEnd(false); }}>Try again</button></div>;
+  return <div className="card"><div className="eyebrow">Quick quiz · {i + 1} of {t.quiz.length}</div><p><b>{q.q}</b></p>
+    {q.o.map((o, k) => <button key={k} className={"opt" + (pick !== null ? (k === q.a ? " right" : k === pick ? " wrong" : "") : "")} onClick={() => choose(k)}>{o}</button>)}
+    {pick !== null && <><p className="muted">{q.why}</p><button onClick={next}>{i + 1 < t.quiz.length ? "Next" : "Finish"}</button></>}</div>;
+}
+function Cards({ t, d, mark }) {
+  const [i, setI] = useState(0), [flip, setFlip] = useState(false);
+  const c = t.cards[i], key = t.id + ":" + i, st = d.cards?.[key];
+  const rate = k => { mark(key, k); setFlip(false); setI((i + 1) % t.cards.length); };
+  return <div className="card"><div className="eyebrow">Flashcards · {i + 1} of {t.cards.length}</div>
+    <div className={"flip" + (flip ? " on" : "")} onClick={() => setFlip(!flip)}><div><div className="face">{c.f}</div><div className="face back">{c.b}</div></div></div>
+    <p className="muted">Tap to flip.{st ? " Last time: " + (st === "know" ? "knew it" : "needs revision") : ""}</p>
+    <div className="row"><button className="grow" onClick={() => rate(true)}>Know it</button><button className="ghost grow" onClick={() => rate(false)}>Revise again</button></div></div>;
+}
+function Topic({ m, t, d, go, toggle, setScore, mark }) {
+  const Demo = DEMOS[t.demo];
+  const k = flat.findIndex(x => x.t.id === t.id), nx = flat[k + 1];
+  return <div className="fade"><button className="ghost sm" onClick={() => go({ v: "mod", m: m.id })}>← {m.title}</button>
+    <h2>{t.title}</h2><p>{t.intro}</p>
+    {Demo && <Demo />}<Videos t={t} /><Quiz key={t.id} t={t} setScore={setScore} /><Cards key={"c" + t.id} t={t} d={d} mark={mark} />
+    <button style={{ width: "100%" }} className={d.done?.[t.id] ? "ghost" : ""} onClick={() => toggle(t.id)}>{d.done?.[t.id] ? "Done ✓ (tap to undo)" : "Mark topic as done"}</button>
+    <div style={{ marginTop: 10 }}>{nx ? <button className="ghost" style={{ width: "100%" }} onClick={() => go({ v: "topic", m: nx.m.id, t: nx.t.id })}>Next: {nx.t.title} →</button>
+      : <button className="ghost" style={{ width: "100%" }} onClick={() => go({ v: "home" })}>Back to roadmap</button>}</div></div>;
+}
+function News() {
+  return <div className="fade"><div className="eyebrow">Market pulse · snapshot {NEWS_DATE}</div><h2>What’s moving markets</h2>
+    {NEWS.map((n, i) => <div className="card" key={i}><span className="tag">{n.tag}</span><h3 style={{ margin: "0 0 4px" }}>{n.h}</h3><div>{n.s}</div>
+      <div className="lens">{n.lens}</div><div className="muted" style={{ marginTop: 6 }}>Source: {n.src}</div></div>)}
+    <Fact /><p className="muted">This is a saved snapshot for learning, not live data and not investment advice.</p></div>;
+}
+function Glossary() {
+  const [s, setS] = useState(""), [tab, setTab] = useState("eli5");
+  const L = { eli5: "ELI5", gen: "Gen Z", pro: "Proper" };
+  return <div className="fade"><h2>Glossary</h2><input type="search" placeholder="Search a term…" value={s} onChange={e => setS(e.target.value)} />
+    <div className="tabs">{Object.keys(L).map(k => <button key={k} className={tab === k ? "on" : ""} onClick={() => setTab(k)}>{L[k]}</button>)}</div>
+    {GLOSSARY.filter(g => g.t.toLowerCase().includes(s.toLowerCase())).map(g => <div className="card" key={g.t}><b className="serif" style={{ fontSize: 18 }}>{g.t}</b><p style={{ margin: "6px 0 0" }}>{g[tab]}</p></div>)}</div>;
+}
+
+function Landing({ go }) {
+  const [sel, setSel] = useState("m4");
+  const nodes = FLOW.flat(), cur = nodes.find(x => x.id === sel), mod = MODULES.find(x => x.id === sel);
+  return <div className="fade">
+    <div className="eyebrow">Beginner to pro · Start from zero</div>
+    <h1 className="lp-h">Learn the maths behind <span className="gt">money.</span></h1>
+    <p className="muted" style={{ fontSize: 16 }}>No finance degree needed. We start at zero and build up to how real quants price, hedge and manage risk.</p>
+    <div className="row"><button onClick={() => go({ v: "home" })}>Start learning</button><button className="ghost" onClick={() => go({ v: "news" })}>Market news</button></div>
+    <div className="stats"><div><b>8</b>modules</div><div><b>~14</b>weeks</div><div><b>0</b>prior knowledge</div></div>
+    <div className="eyebrow">The map</div><h2>How everything fits together</h2>
+    <p className="muted">Follow the lines from top to bottom. The gold number is how much a subject counts toward being job-ready (our estimate). Tap any box.</p>
+    <div className="stack">{nodes.filter(x => x.w > 0).map((x, i) => <div key={x.id} style={{ flex: x.w, background: "var(--gold)", opacity: 1 - i * 0.1 }} />)}</div>
+    <div className="muted" style={{ marginBottom: 14 }}>All subjects together = 100%</div>
+    {FLOW.map((lvl, li) => <React.Fragment key={li}>{li > 0 && <div className="link" />}
+      <div className="lvl">{lvl.map((x, i) => <div key={x.id} className={"node" + (sel === x.id ? " sel" : "")} style={{ animationDelay: (li * 0.12 + i * 0.06) + "s" }} onClick={() => setSel(x.id)}>
+        <small>{x.n}</small><b>{x.s}</b><div className="w">{x.w ? x.w + "%" : "warm-up"}</div>{x.w > 0 && <i style={{ width: x.w * 4 + "%" }} />}</div>)}</div></React.Fragment>)}
+    <div className="card fade" key={sel} style={{ marginTop: 18 }}><div className="eyebrow">{cur.n} · {mod.time}</div><h3 style={{ margin: "4px 0" }}>{mod.title}</h3><p style={{ margin: "0 0 10px" }}>{cur.why}</p>
+      {mod.soon ? <span className="muted">Coming soon</span> : <button className="sm" onClick={() => go({ v: "mod", m: mod.id })}>Open module</button>}</div>
+    <Fact />
+  </div>;
+}
+
+/* ===== 6. APP ===== */
+function App() {
+  const [d, setD] = useState(load), [view, go] = useState({ v: "landing" });
+  const dark = d.dark !== false;
+  useEffect(() => { document.documentElement.dataset.theme = dark ? "dark" : "light"; }, [dark]);
+  useEffect(() => window.scrollTo(0, 0), [view]);
+  const update = fn => setD(p => { const n = fn(p); save(n); return n; });
+  const toggle = id => update(p => bump({ ...p, done: { ...p.done, [id]: !p.done?.[id] } }));
+  const setScore = (id, s) => update(p => bump({ ...p, scores: { ...p.scores, [id]: s } }));
+  const mark = (k, know) => update(p => bump({ ...p, cards: { ...p.cards, [k]: know ? "know" : "revise" } }));
+  const m = MODULES.find(x => x.id === view.m), t = m?.topics?.find(x => x.id === view.t);
+  const streak = d.streak && (d.streak.last === day(0) || d.streak.last === day(1)) ? d.streak.n : 0;
+  const nv = v => go({ v });
+  const items = NEWS.map(n => n.h);
+  return <>
+    <div className="tick"><div>{[...items, ...items].map((h, i) => <span key={i}><b>▲</b>{h}</span>)}</div></div>
+    <div className="wrap">
+      <header><div className="logo" onClick={() => nv("landing")}>Quant<span>Buddy</span></div>
+        <div className="row">{streak > 0 && <span className="muted gold">{streak}-day streak</span>}
+          <button className="ghost sm" onClick={() => update(p => ({ ...p, dark: !dark }))}>{dark ? "Light" : "Dark"}</button></div></header>
+      {view.v === "landing" && <Landing go={go} />}
+      {view.v === "home" && <Home d={d} go={go} />}
+      {view.v === "mod" && <Module m={m} d={d} go={go} toggle={toggle} />}
+      {view.v === "topic" && <Topic m={m} t={t} d={d} go={go} toggle={toggle} setScore={setScore} mark={mark} />}
+      {view.v === "news" && <News />}
+      {view.v === "gloss" && <Glossary />}
+    </div>
+    <div className="nav">{[["landing", "Home"], ["home", "Learn"], ["news", "News"], ["gloss", "Glossary"]].map(([k, l]) =>
+      <button key={k} className={(view.v === k || (k === "home" && (view.v === "mod" || view.v === "topic"))) ? "on" : ""} onClick={() => nv(k)}>{l}</button>)}</div>
+  </>;
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

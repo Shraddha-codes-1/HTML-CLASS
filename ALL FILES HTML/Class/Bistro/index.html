@@ -1,110 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bistro by Blinkit | Food Delivered at Your Doorstep</title>
-  <meta name="description" content="Bistro by Blinkit delivers fresh, quick and delicious meals to your doorstep.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <header>
-    <div class="logo">Bistro</div>
-    <nav id="e">
-      <a href="#menu">Menu</a>
-      <a href="#why-bistro">Why Bistro</a>
-      <a href="#download">Download</a>
-      <a class="button" href="#download">Get the App</a>
-    </nav>
-  </header>
-  <main>
-    <section class="heading">
-      <div class="heading1">
-        <h1>Delivered at your doorstep</h1>
-        <p>
-          Enjoy delicious snacks, meals, and drinks delivered,
-          prepared in a hygienic environment nearby.
-        </p>
-        <a class="button" href="#download">Get the App</a>
-      </div>
-    </section>
-    <div class="menu" id="menu">
-      <img
-        class="menu-image"
-        src="https://cdn.grofers.com/layout-engine/v2/2024-11/desk---Menu-Images.png"
-        alt="Bistro food menu"
-      >
-    </div>
-    <section class="feature" id="why-bistro">
-      <div class="feature-text">
-        <h2>Health &amp; Hygiene</h2>
-        <ul>
-          <li>High-quality ingredients for great taste and nutrition.</li>
-          <li>Balanced, delicious meals for all kinds of dietary needs.</li>
-          <li>Prepared in hygienic kitchens.</li>
-        </ul>
-      </div>
-      <img
-        src="https://cdn.grofers.com/da/bistro-assets/bistro%20coming%20soon/Health-_-Hygiene.webp"
-        alt="Fresh and hygienic food"
-      >
-    </section>
-    <section class="feature">
-      <div class="feature-text">
-        <h2>Sustainability</h2>
-        <ul>
-          <li>Eco-friendly, recyclable packaging.</li>
-          <li>Responsibly sourced, transparent ingredients.</li>
-          <li>Reduced carbon footprint with green practices.</li>
-        </ul>
-      </div>
-      <img
-        src="https://cdn.grofers.com/layout-engine/v2/2024-12/desk---bistro_pack-(1).png"
-        alt="Bistro sustainable packaging"
-      >
-    </section>
-    <section class="feature">
-      <div class="feature-text">
-        <h2>Speed</h2>
-        <ul>
-          <li>Food and beverages delivered at your doorstep</li>
-          <li>Live order tracking for real-time updates.</li>
-          <li>Quick prep, seamless delivery every time.</li>
-        </ul>
-      </div>
-      <img
-        src="https://cdn.grofers.com/layout-engine/v2/2024-11/desk---Speed_v2_1.png"
-        alt="Fast food delivery"
-      >
-    </section>
-  </main>
-  <footer id="download">
-    <div class="footer-columns">
-      <div>
-        <h3>About Bistro</h3>
-        <a href="#">About</a>
-        <a href="https://blinkit.com/careers/">Career</a>
-        <a href="https://blinkit.com/blog/">Blog</a>
-        <a href="https://blinkit.com/press">Press</a>
-      </div>
-      <div>
-        <h3>Learn more</h3>
-        <a href="#">Privacy</a>
-        <a href="#">Policy</a>
-        <a href="#">Terms</a>
-        <a href="#">For Partners (Coming Soon)</a>
-      </div>
-    </div>
+<!DOCTYPE html> <!-- Tells the browser this is a modern HTML5 page -->
+<html lang="en"> <!-- Root element; lang helps screen readers and search engines -->
+<head> <!-- Head = information ABOUT the page, not visible content -->
+  <meta charset="UTF-8"> <!-- Lets the page show all characters and emojis correctly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page fit phone screens -->
+  <title>bistro by Blinkit</title> <!-- Text shown on the browser tab -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Speeds up loading the Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;800&display=swap" rel="stylesheet"> <!-- Loads the Lexend font, which looks very close to the real site -->
+  <link rel="stylesheet" href="style.css"> <!-- Connects the external CSS file -->
+</head> <!-- End of head -->
+<body> <!-- Body = everything visible on the page -->
 
-    <p class="copyright">
-      By continuing past this page, you agree to our Terms of service, Cookie policy,
-      Privacy policy and Content policies. All trademarks are properties of their
-      respective owners. 2016-2026 © Blinkit Foods Limited. All rights reserved
-    </p>
-  </footer>
+  <nav class="topbar" id="topbar"> <!-- Fixed green navigation bar; JS shows it after scrolling -->
+    <a href="#" class="logo logo-sm"> <!-- Logo link (small version) -->
+      <span class="logo-word">bistro</span> <!-- The big italic "bistro" word -->
+      <span class="logo-sub">BY BLINKIT</span> <!-- Small text under the logo -->
+    </a> <!-- End of logo link -->
+    <a href="#download" class="btn btn-dark">Get the App</a> <!-- Dark button on the right side of the bar -->
+  </nav> <!-- End of nav -->
 
-</body>
-</html>
+  <header class="hero"> <!-- Big green hero section at the top -->
+    <div class="hero-content"> <!-- Left side: logo, heading, text, button -->
+      <a href="#" class="logo"> <!-- Logo inside the hero (large version) -->
+        <span class="logo-word">bistro</span> <!-- The "bistro" word -->
+        <span class="logo-sub">BY BLINKIT</span> <!-- "BY BLINKIT" tag -->
+      </a> <!-- End of hero logo -->
+      <h1>Delivered at your doorstep</h1> <!-- Main heading; CSS makes it uppercase -->
+      <p>Enjoy delicious snacks, meals, and drinks delivered, prepared in a hygienic environment nearby.</p> <!-- Short description -->
+      <a href="#download" class="btn btn-white">Get the App</a> <!-- White call-to-action button -->
+    </div> <!-- End of left side -->
+    <img class="hero-art" src="./pizza.jpg" alt="Double cheese pizza"> <!-- Right side hero picture: the double cheese pizza image -->
+    <div class="explore"> <!-- White tab that sits at the bottom centre of the hero -->
+      <h2>Explore our menu</h2> <!-- Tab heading -->
+      <p>Discover a wide range of options tailored to your taste and cravings</p> <!-- Tab sub-text -->
+    </div> <!-- End of explore tab -->
+  </header> <!-- End of hero -->
+
+  <section class="menu"> <!-- Section holding the food grid -->
+    <div class="grid"> <!-- Grid container; CSS makes 5 columns -->
+
+      <article class="food" tabindex="0" style="--c1:#e9b44c;--c2:#8a5a1f"> <!-- Card 1; tabindex lets keyboard users focus it; style sets two colour variables -->
+        <div class="food-img">🍟</div> <!-- Picture placeholder (swap for img) -->
+        <div class="food-info"><h3>French Fries</h3><p>Crispy golden fries tossed in light seasoning, served with tangy ketchup.</p></div> <!-- Hover pop-up text: name + description -->
+      </article> <!-- End of card 1 -->
+
+      <article class="food" tabindex="0" style="--c1:#e08a3c;--c2:#6b3b17"> <!-- Card 2 -->
+        <div class="food-img">🍗</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Crispy Nuggets</h3><p>Juicy bite-sized chicken pieces with a crunchy coating and creamy dips.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 2 -->
+
+      <article class="food" tabindex="0" style="--c1:#b87a4b;--c2:#4a2c17"> <!-- Card 3 -->
+        <div class="food-img">☕</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Masala Chai</h3><p>Hot milk tea brewed with ginger and spices, just like a roadside stall.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 3 -->
+
+      <article class="food" tabindex="0" style="--c1:#d9a441;--c2:#7a4d1a"> <!-- Card 4 -->
+        <div class="food-img">🥟</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Samosa</h3><p>Flaky pastry filled with spiced potato, served with mint chutney.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 4 -->
+
+      <article class="food" tabindex="0" style="--c1:#e5c07b;--c2:#8c6a2f"> <!-- Card 5 -->
+        <div class="food-img">🫓</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Aloo Paratha</h3><p>Stuffed flatbread cooked with butter, served with curd and pickle.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 5 -->
+
+      <article class="food" tabindex="0" style="--c1:#c9a27a;--c2:#5a3a22"> <!-- Card 6 -->
+        <div class="food-img">☕</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Cafe Latte</h3><p>Smooth espresso blended with steamed milk and a creamy foam top.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 6 -->
+
+      <article class="food" tabindex="0" style="--c1:#d8c9a8;--c2:#6b5a3a"> <!-- Card 7 -->
+        <div class="food-img">🍚</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Rajma Chawal</h3><p>Comforting kidney bean curry served over fluffy steamed rice.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 7 -->
+
+      <article class="food" tabindex="0" style="--c1:#cfd8a0;--c2:#5f6b2e"> <!-- Card 8 -->
+        <div class="food-img">🌯</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Spring Rolls</h3><p>Crunchy rolls packed with fresh veggies, served with a spicy dip.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 8 -->
+
+      <article class="food" tabindex="0" style="--c1:#e6b877;--c2:#8a5a2a"> <!-- Card 9 -->
+        <div class="food-img">🥐</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Butter Croissant</h3><p>Flaky, buttery layers baked fresh and best enjoyed warm.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 9 -->
+
+      <article class="food" tabindex="0" style="--c1:#c4a483;--c2:#5b3d28"> <!-- Card 10 -->
+        <div class="food-img">🍰</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Tiramisu Jar</h3><p>Layers of coffee-soaked sponge and cream, dusted with cocoa.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 10 -->
+
+      <article class="food" tabindex="0" style="--c1:#e0b050;--c2:#7a4a18"> <!-- Card 11 -->
+        <div class="food-img">🫓</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Puri Chole</h3><p>Puffy fried bread with spicy chickpea curry and green chutney.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 11 -->
+
+      <article class="food" tabindex="0" style="--c1:#e8c34a;--c2:#7d5b12"> <!-- Card 12 -->
+        <div class="food-img">🍛</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Kadhi Chawal</h3><p>Tangy yogurt curry with soft dumplings, served with steamed rice.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 12 -->
+
+      <article class="food" tabindex="0" style="--c1:#e59a4a;--c2:#6e3c16"> <!-- Card 13 -->
+        <div class="food-img">🍗</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Chicken Tenders</h3><p>Golden strips of tender chicken with a crisp, seasoned crust.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 13 -->
+
+      <article class="food" tabindex="0" style="--c1:#d1584a;--c2:#6b2020"> <!-- Card 14 -->
+        <div class="food-img">🥗</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Sprout Chaat</h3><p>Fresh sprouts with pomegranate, onion and lemon for a zesty crunch.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 14 -->
+
+      <article class="food" tabindex="0" style="--c1:#e9d06a;--c2:#80691d"> <!-- Card 15 -->
+        <div class="food-img">🍲</div> <!-- Picture placeholder -->
+        <div class="food-info"><h3>Cheesy Masala Rice</h3><p>Spiced yellow rice topped with melted cheese, served piping hot.</p></div> <!-- Name + description -->
+      </article> <!-- End of card 15 -->
+
+    </div> <!-- End of grid -->
+  </section> <!-- End of menu section -->
+
+  <main class="features"> <!-- Main wrapper for the three feature rows -->
+
+    <section class="feature"> <!-- Feature 1: Health & Hygiene -->
+      <div class="feature-text"> <!-- Left side text -->
+        <h2>Health &amp; Hygiene</h2> <!-- Heading; &amp; shows the & symbol -->
+        <ul> <!-- Bullet list; CSS swaps bullets for a star -->
+          <li>High-quality ingredients for great taste and nutrition.</li> <!-- Bullet 1 -->
+          <li>Balanced, delicious meals for all kinds of dietary needs.</li> <!-- Bullet 2 -->
+          <li>Prepared in hygienic kitchens.</li> <!-- Bullet 3 -->
+        </ul> <!-- End list -->
+      </div> <!-- End text side -->
+      <div class="feature-art"> <!-- Right side picture area -->
+        <div class="blob"></div> <!-- Light green shape behind the picture -->
+        <div class="phone"><div class="phone-screen">Welcome to bistro 🍽️</div></div> <!-- Phone mockup placeholder -->
+      </div> <!-- End picture side -->
+    </section> <!-- End feature 1 -->
+
+    <section class="feature"> <!-- Feature 2: Sustainability -->
+      <div class="feature-text"> <!-- Left side text -->
+        <h2>Sustainability</h2> <!-- Heading -->
+        <ul> <!-- Bullet list -->
+          <li>Eco-friendly, recyclable packaging.</li> <!-- Bullet 1 -->
+          <li>Responsibly sourced, transparent ingredients.</li> <!-- Bullet 2 -->
+          <li>Reduced carbon footprint with green practices.</li> <!-- Bullet 3 -->
+        </ul> <!-- End list -->
+      </div> <!-- End text side -->
+      <div class="feature-art"> <!-- Right side picture area -->
+        <div class="blob"></div> <!-- Light green shape -->
+        <div class="bag">🛍️</div> <!-- Paper bag placeholder -->
+      </div> <!-- End picture side -->
+    </section> <!-- End feature 2 -->
+
+    <section class="feature"> <!-- Feature 3: Speed -->
+      <div class="feature-text"> <!-- Left side text -->
+        <h2>Speed</h2> <!-- Heading -->
+        <ul> <!-- Bullet list -->
+          <li>Food and beverages delivered at your doorstep.</li> <!-- Bullet 1 -->
+          <li>Live order tracking for real-time updates.</li> <!-- Bullet 2 -->
+          <li>Quick prep, seamless delivery every time.</li> <!-- Bullet 3 -->
+        </ul> <!-- End list -->
+      </div> <!-- End text side -->
+      <div class="feature-art"> <!-- Right side picture area -->
+        <div class="blob"></div> <!-- Light green shape -->
+        <div class="phone"><div class="phone-screen">Arriving in 6 minutes 🛵</div></div> <!-- Phone mockup placeholder -->
+      </div> <!-- End picture side -->
+    </section> <!-- End feature 3 -->
+
+  </main> <!-- End main -->
+
+  <footer class="footer" id="download"> <!-- Footer; id lets the Get the App buttons scroll here -->
+    <div class="footer-cols"> <!-- Holds the four columns -->
+      <div> <!-- Column 1 -->
+        <h4>About Bistro</h4> <!-- Column heading -->
+        <a href="#">About</a> <a href="#">Career</a> <a href="#">Blog</a> <a href="#">Press</a> <!-- Links, stacked by CSS -->
+      </div> <!-- End column 1 -->
+      <div> <!-- Column 2 -->
+        <h4>Learn more</h4> <!-- Column heading -->
+        <a href="#">Privacy</a> <a href="#">Policy</a> <a href="#">Terms</a> <a href="#">For Partners (Coming Soon)</a> <!-- Links -->
+      </div> <!-- End column 2 -->
+      <div> <!-- Column 3 -->
+        <h4>Follow us</h4> <!-- Column heading -->
+        <div class="socials"> <!-- Wrapper for the round social icons -->
+          <a href="#" aria-label="Instagram">IG</a> <!-- Instagram circle; aria-label helps screen readers -->
+          <a href="#" aria-label="Facebook">f</a> <!-- Facebook circle -->
+          <a href="#" aria-label="X">X</a> <!-- X (Twitter) circle -->
+          <a href="#" aria-label="LinkedIn">in</a> <!-- LinkedIn circle -->
+        </div> <!-- End socials -->
+      </div> <!-- End column 3 -->
+      <div> <!-- Column 4 -->
+        <h4>Download app</h4> <!-- Column heading -->
+        <a href="#" class="store"><small>GET IT ON</small>Google Play</a> <!-- Play Store badge -->
+        <a href="#" class="store"><small>Download on the</small>App Store</a> <!-- App Store badge -->
+      </div> <!-- End column 4 -->
+    </div> <!-- End columns -->
+    <p class="legal">By continuing past this page, you agree to our Terms of service, Cookie policy, Privacy policy and Content policies. All trademarks are properties of their respective owners. 2016-2026 © Blinkit Foods Limited. All rights reserved</p> <!-- Legal text at the very bottom -->
+  </footer> <!-- End footer -->
+
+  <script> /* JavaScript: runs in the browser to add behaviour */
+    const topbar = document.getElementById('topbar'); // Grabs the nav bar element so we can change it
+    const hero = document.querySelector('.hero'); // Grabs the hero section so we know where it ends
+    function updateNav() { // A function that decides whether to show the nav bar
+      const heroBottom = hero.getBoundingClientRect().bottom; // Distance from top of screen to bottom of hero
+      topbar.classList.toggle('show', heroBottom < 80); // Adds class "show" once the hero has scrolled away, removes it otherwise
+    } // End of function
+    window.addEventListener('scroll', updateNav); // Runs the function every time the user scrolls
+    updateNav(); // Runs once on load so the bar is correct immediately
+  </script> <!-- End of script -->
+</body> <!-- End of body -->
+</html> <!-- End of the HTML document -->

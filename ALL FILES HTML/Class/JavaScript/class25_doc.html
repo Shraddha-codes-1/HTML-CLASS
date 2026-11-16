@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Document = default given by browser</h1>
+    <hr>
+    <ul>
+        <li>Blair </li>
+        <li> Serena </li>
+        <li>Nate </li>
+        <li>Dan </li>
+        <li>Chuck </li>
+    </ul>
+    <script>
+        console.log(document);
+        //control the whole page using this document object 
+        // 2 things always
+        //1. find the element 
+        //2. do the operation
+
+        let ulElem=document.querySelector("ul");
+        ulElem.style.border="5px solid red ";
+
+
+        let h1el=document.querySelector("h1");
+        h1el.textContent=" XOXO -  Gossip girl";
+    </script>
+</body>
+</html>

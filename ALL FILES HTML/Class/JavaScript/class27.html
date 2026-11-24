@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 200px; width: 200px; border: solid red;"></div>
+    <button id ="btn">Change bg !!</button>
+    <script>
+        let button = document.querySelector("#btn");
+        button.addEventListener("click",function(){
+            let box= document.querySelector("div");
+            box.style.backgroundColor="yellow";
+        })
+        button.addEventListener('mouseenter',function(){
+          let box= document.querySelector("div");
+            box.style.backgroundColor="red";
+        })
+        button.addEventListener('mouseleave',function(){
+          console.log("mouse over")
+          let box= document.querySelector("div");
+            box.style.backgroundColor="transparent";
+            console.log(box.style.backgroundColor)
+        })
+        button.addEventListener('contextmenu',function(e){
+          e.preventDefault();
+          let box= document.querySelector("div");
+            box.style.backgroundColor="coral";
+        })
+    </script>
+</body>
+</html>
